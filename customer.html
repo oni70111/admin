@@ -1,0 +1,47 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>QUALITY EXPRESS | Customer Portal</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#f4f7fb;color:#18324b}
+header{background:linear-gradient(135deg,#08285f,#1769cc);color:#fff;padding:14px 20px}
+.nav{max-width:1180px;margin:auto;display:flex;justify-content:space-between;align-items:center;gap:12px}
+.brand{display:flex;gap:12px;align-items:center}.logo{width:46px;height:46px;border-radius:14px;background:#fff;color:#0d2f6f;display:grid;place-items:center;font-weight:900}
+.brand small{display:block;opacity:.85}.wrap{max-width:1180px;margin:auto;padding:18px}
+.panel,.card{background:#fff;border:1px solid #dce6f1;border-radius:18px;padding:18px;box-shadow:0 8px 25px rgba(20,50,90,.06)}
+.grid{display:grid;gap:14px}.g2{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(3,1fr)}.g4{grid-template-columns:repeat(4,1fr)}
+label{display:block;font-size:12px;font-weight:bold;margin-bottom:6px}input,select,textarea{width:100%;padding:11px 12px;border:1px solid #cdd9e7;border-radius:10px;font:inherit;background:#fff}
+textarea{min-height:90px;resize:vertical}.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:bold;cursor:pointer}.bluebtn{background:#0d2f6f;color:#fff}.soft{background:#edf4fc;color:#0d2f6f}.red{background:#fff0f0;color:#b83232}.goldbtn{background:#f0b429;color:#26364a}.linebtn{background:#06c755;color:#fff}
+.section{margin-top:24px}.muted{font-size:13px;color:#708096;line-height:1.6}.hide{display:none!important}.kpi{font-size:27px;font-weight:900;color:#0d2f6f}.stars{font-size:22px;color:#eaa900}
+.tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:15px}.tab{border:none;border-radius:9px;padding:9px 12px;background:#edf3fa;color:#0d2f6f;font-weight:bold;cursor:pointer}.tab.active{background:#0d2f6f;color:#fff}
+.table-wrap{overflow:auto}.table{width:100%;border-collapse:collapse;min-width:850px}.table th,.table td{padding:10px;border-bottom:1px solid #e5edf5;text-align:left;font-size:13px}.table th{background:#f5f8fb}
+.statusbox{padding:12px;border-radius:12px;background:#f7fafc;border:1px solid #e0e8f1;margin-top:10px}
+.good{color:#15865f}.warn{color:#a46800}
+@media(max-width:850px){.g2,.g3,.g4{grid-template-columns:1fr}.wrap{padding:12px}.nav{align-items:flex-start}}
+</style>
+
+<style>
+.hero{background:linear-gradient(135deg,#0d377c,#1e73d6);color:#fff;padding:52px 20px 82px}.hero>div{max-width:1180px;margin:auto}.hero h1{font-size:36px;margin:0 0 10px}.hero p{margin:0;opacity:.92;line-height:1.7}.lift{margin-top:-42px}
+.contact-box{display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap;background:linear-gradient(135deg,#eafff0,#fff);border:1px solid #cdeed7;border-radius:18px;padding:18px}
+footer{margin-top:35px;background:#09234f;color:#cbd8ea;text-align:center;padding:24px;font-size:12px}
+</style></head><body>
+<header><div class="nav"><div class="brand"><div class="logo">QE</div><div><b id="companyName">บริษัท ควอลิตี้ เอ็กซ์เพรส จำกัด</b><small id="companyEn">QUALITY EXPRESS CO., LTD.</small></div></div><button class="btn linebtn" onclick="openLine()">💬 ติดต่อเจ้าหน้าที่</button></div></header>
+<section class="hero"><div><h1 id="heroTitle">Customer Portal</h1><p id="heroText"></p></div></section>
+<main class="wrap lift">
+<section class="panel"><h2 style="margin-top:0">ตรวจสอบข้อมูลการจอง</h2><div class="grid g3">
+<div><label>เลขที่การจอง</label><input id="cBooking" placeholder="เช่น QE-260901"></div><div><label>เบอร์โทรศัพท์</label><input id="cPhone" placeholder="กรอกเบอร์โทร"></div><div style="align-self:end"><button class="btn bluebtn" onclick="lookupBooking()">ตรวจสอบสิทธิ์</button></div></div><div id="lookupResult" class="section hide"></div></section>
+<section class="section"><h2>โปรโมชั่นปัจจุบัน</h2><div id="customerPromos" class="grid g3"></div></section>
+<section class="section"><div class="contact-box"><div><h2 style="margin:0 0 6px">ต้องการสอบถามเจ้าหน้าที่?</h2><div class="muted" id="contactText"></div></div><button class="btn linebtn" onclick="openLine()">เปิดแชท LINE Official</button></div></section>
+<section class="section"><h2>รีวิวจากลูกค้า</h2><div id="customerReviews" class="grid g3"></div></section>
+<section class="section panel"><h2 style="margin-top:0">ส่งรีวิวของคุณ</h2><div class="grid g2"><div><label>เลขที่การจอง</label><input id="rvBooking"></div><div><label>ชื่อที่ต้องการแสดง</label><input id="rvName"></div><div><label>คะแนน</label><select id="rvRating"><option value="5">5 ดาว ⭐⭐⭐⭐⭐</option><option value="4">4 ดาว ⭐⭐⭐⭐</option><option value="3">3 ดาว ⭐⭐⭐</option><option value="2">2 ดาว ⭐⭐</option><option value="1">1 ดาว ⭐</option></select></div><div style="grid-column:1/-1"><label>ข้อความรีวิว</label><textarea id="rvText"></textarea></div></div><button class="btn goldbtn" onclick="submitReview()">ส่งรีวิว</button><div class="muted" style="margin-top:8px">รีวิวจะเผยแพร่หลังเจ้าหน้าที่อนุมัติ</div></section>
+</main>
+<footer><span id="footerCompany"></span> • Customer Service Portal</footer>
+<script>
+const KEY='quality_express_line_test_v1';
+function seed(){return {settings:{companyName:'บริษัท ควอลิตี้ เอ็กซ์เพรส จำกัด',companyEn:'QUALITY EXPRESS CO., LTD.',lineUrl:'',phone:'',heroTitle:'Customer Portal',heroText:'ตรวจสอบสิทธิ์ สถานะการจอง ยอดคงเหลือ โปรโมชั่น และส่งรีวิวได้จากหน้าเดียว',contactText:'กดปุ่มเพื่อเปิดแชท LINE Official Account ของบริษัท',paymentText:'กรุณาชำระเฉพาะบัญชีหรือช่องทางที่บริษัทแจ้งอย่างเป็นทางการเท่านั้น'},bookings:[{id:'QE-260901',customer:'ลูกค้าตัวอย่าง',phone:'0891234567',country:'ญี่ปุ่น - ฮอกไกโด',package:'Premium 5D2N',travellers:2,total:65000,paid:40000,travelDate:'2026-11-18',status:'รอยืนยันยอดสุดท้าย',promo:'Flash Deal -5,000',note:'กรุณาตรวจสอบหนังสือเดินทางก่อนเดินทาง'}],promotions:[{id:'P1',title:'Flash Deal',detail:'ส่วนลดแพ็กเกจที่ร่วมรายการ สูงสุด 5,000 บาท/ท่าน',active:true},{id:'P2',title:'จองคู่ / จองกลุ่ม',detail:'รับส่วนลดเพิ่ม 1,000–2,000 บาท/ท่าน ตามเงื่อนไข',active:true}],reviews:[{id:'R1',bookingId:'QE-260901',name:'คุณลูกค้า A',rating:5,text:'บริการดี แอดมินตอบไว รายละเอียดชัดเจนค่ะ',approved:true,date:'2026-09-08'}],payments:[]}}
+function loadDB(){let x=localStorage.getItem(KEY);if(x){try{return JSON.parse(x)}catch(e){}}let d=seed();localStorage.setItem(KEY,JSON.stringify(d));return d}
+function saveDB(d){localStorage.setItem(KEY,JSON.stringify(d))}function money(n){return new Intl.NumberFormat('th-TH').format(Number(n||0))}function today(){return new Date().toISOString().slice(0,10)}let db=loadDB();
+function render(){db=loadDB();let s=db.settings||{};companyName.textContent=s.companyName||'';companyEn.textContent=s.companyEn||'';heroTitle.textContent=s.heroTitle||'Customer Portal';heroText.textContent=s.heroText||'';contactText.textContent=s.contactText||'';footerCompany.textContent=s.companyEn||s.companyName||'';customerPromos.innerHTML=db.promotions.filter(x=>x.active).map(p=>`<div class="card"><h3>${p.title}</h3><div class="muted">${p.detail}</div></div>`).join('');let rs=db.reviews.filter(x=>x.approved).slice().reverse();customerReviews.innerHTML=rs.map(r=>`<div class="card"><div class="stars">${'★'.repeat(r.rating)}${'☆'.repeat(5-r.rating)}</div><h3>${r.name}</h3><div>${r.text}</div><div class="muted" style="margin-top:8px">${r.date}</div></div>`).join('')||'<div class="muted">ยังไม่มีรีวิว</div>'}
+function openLine(){db=loadDB();let url=((db.settings||{}).lineUrl||'').trim();if(!url){alert('ยังไม่ได้ตั้งค่าลิงก์ LINE Official Account กรุณาติดต่อบริษัท');return}if(!/^https?:\/\//i.test(url))url='https://'+url;window.open(url,'_blank')}
+function lookupBooking(){db=loadDB();let id=cBooking.value.trim().toLowerCase(),ph=cPhone.value.trim();let b=db.bookings.find(x=>x.id.toLowerCase()===id&&x.phone===ph);lookupResult.classList.remove('hide');if(!b){lookupResult.innerHTML='<div class="card"><b style="color:#c43d3d">ไม่พบข้อมูล</b><div class="muted">กรุณาตรวจสอบเลขที่การจองและเบอร์โทรอีกครั้ง</div></div>';return}let bal=Math.max(0,b.total-b.paid);lookupResult.innerHTML=`<div class="card"><h3>${b.customer}</h3><div class="muted">${b.package} • ${b.country}</div><div class="grid g4" style="margin-top:14px"><div class="card"><div class="muted">Booking</div><b>${b.id}</b></div><div class="card"><div class="muted">วันเดินทาง</div><b>${b.travelDate||'-'}</b></div><div class="card"><div class="muted">ยอดรวม</div><b>฿${money(b.total)}</b></div><div class="card"><div class="muted">ยอดคงเหลือ</div><b>฿${money(bal)}</b></div></div><p><b>สถานะ:</b> ${b.status}</p><p><b>โปรโมชั่น:</b> ${b.promo||'-'}</p><div class="muted">${b.note||''}</div><div class="muted" style="margin-top:8px"><b>หมายเหตุการชำระ:</b> ${db.settings.paymentText||''}</div><button class="btn linebtn" style="margin-top:10px" onclick="openLine()">สอบถามเจ้าหน้าที่ทาง LINE</button></div>`}
+function submitReview(){db=loadDB();let bid=rvBooking.value.trim(),name=rvName.value.trim(),txt=rvText.value.trim(),rating=Number(rvRating.value);let b=db.bookings.find(x=>x.id.toLowerCase()===bid.toLowerCase());if(!b)return alert('ไม่พบเลขที่การจอง');if(!name||!txt)return alert('กรุณากรอกชื่อและข้อความรีวิว');db.reviews.push({id:'R'+Date.now(),bookingId:b.id,name,rating,text:txt,approved:false,date:today()});saveDB(db);rvText.value='';alert('ส่งรีวิวเรียบร้อยแล้ว รอเจ้าหน้าที่อนุมัติ')}
+window.addEventListener('storage',render);render();
+</script></body></html>
